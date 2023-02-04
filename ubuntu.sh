@@ -442,6 +442,7 @@ ip6tables-save > /etc/iptables/rules.v6
 
 apt-get install squid -y
 echo "http_port 8080
+http_port 8989
 acl to_vpn dst `curl ipinfo.io/ip`
 http_access allow to_vpn 
 via off
@@ -954,7 +955,7 @@ service apache2 restart
 service openvpn restart
 cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bak
 update-rc.d squid enable
-
+service squid restart
 sudo apt-get autoremove -y > /dev/null 2>&1
 sudo apt-get clean > /dev/null 2>&1
 history -c
